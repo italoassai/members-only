@@ -1,4 +1,22 @@
 
-  <%=link_to "Criar novo Post", new_post_path %>
+
+
+
+<%if user_signed_in?%>
+<%@posts.each do |post|%>
+<h1><%= post.title%></h1>
+<h3><%= post.description%></h3>
+<%end%>
+<div><%= link_to "Criar novo Post", new_post_path %></div>
+<div><%= link_to "Sair", destroy_user_session_path %></div>
+
+<%else%>
+<%@posts.each do |post|%>
+<h1><%= post.title%></h1>
+<div><%= link_to "Entrar ", new_user_session_path %></div>
+<%end%>
+
+  <%end%>
+
 
  
